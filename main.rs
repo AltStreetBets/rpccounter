@@ -15,6 +15,9 @@ fn main() {
 
     let timing = apr / 100.0 / seconds_per_year / 10.0;
     let amounty = amount * timing * 0.995; //increase of rewards every 0.1 seconds. Also giving it a small downplay value to never exceed the actual value.
+    
+    //Alternatively, you can set amounty equal to the last received reward, divided by 20. 
+    //let amounty = last_reward_rpc_data / block_seconds / 10;
 
     let mut rewards = 0.0;
     let mut rpcvalue = 0.0;
@@ -26,7 +29,7 @@ fn main() {
             n += blocks_timeout * 10;
             println!("Checked in with rpc");
             //pull data from rpc
-            //reward = rpc data;
+            //reward = last_reward_rpc_data;
             rewards = rpcvalue;
             println!("new value {}", rewards);
         } else {
